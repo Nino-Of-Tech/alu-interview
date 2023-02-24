@@ -6,7 +6,7 @@ def rain(walls):
     n = len(walls)
     if n == 0:
         return 0
-    
+
     left_max = [0] * n
     right_max = [0] * n
 
@@ -21,5 +21,5 @@ def rain(walls):
     total_water = 0
     for i in range(n):
         total_water += min(left_max[i], right_max[i]) - walls[i]
-        
+
     return total_water
