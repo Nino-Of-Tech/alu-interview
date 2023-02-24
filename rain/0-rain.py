@@ -1,18 +1,22 @@
 #!/usr/bin/python3
 def rain(walls):
-    left, right = 0, len(walls) - 1
-    left_max = right_max = total_water = 0
-    while left < right:
-        if walls[left] < walls[right]:
-            if walls[left] > left_max:
-                left_max = walls[left]
-            else:
-                total_water += (left_max - walls[left])
-            left += 1
-        else:
-            if walls[right] > right_max:
-                right_max = walls[right]
-            else:
-                total_water += (right_max - walls[right])
-            right -= 1
+    n = len(walls)
+    if n == 0:
+        return 0
+    
+    left_max = [0] * n
+    right_max = [0] * n
+    
+    left_max[0] = walls[0]
+    for i in range(1, n):
+        left_max[i] = max(left_max[i-1], walls[i])
+    
+    right_max[n-1] = walls[n-1]
+    for i in range(n-2, -1, -1):
+        right_max[i] = max(right_max[i+1], walls[i])
+    
+    total_water = 0
+    for i in range(n):
+        total_water += min(left_max[i], right_max[i]) - walls[i]
+    
     return total_water
