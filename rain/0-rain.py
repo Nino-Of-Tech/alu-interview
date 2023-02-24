@@ -1,8 +1,12 @@
 #!/usr/bin/python3
+
+
 def rain(walls):
     n = len(walls)
     if n == 0:
         return 0
+`
+"""square units of water that will be retained after it rains"""
     
     left_max = [0] * n
     right_max = [0] * n
