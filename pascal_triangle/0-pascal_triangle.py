@@ -1,23 +1,14 @@
+ #!/usr/bin/python3
 def pascal_triangle(n):
-     
-    
-    for line in range(0, n) :
-        
-        for i in range(0, line + 1) :
-            print(binomialCoeff(line, i),
-                " ", end = "")
-        print()
-     
- 
-def binomialCoeff(n, k) :
-    res = 1
-    if (k > n - k) :
-        k = n - k
-    for i in range(0 , k) :
-        res = res * (n - i)
-        res = res // (i + 1)
-     
-    return res
- 
-n = 7
-pascal_triangle(n)
+    """pascal function"""
+    if n <= 0:
+        return []
+    triangle = [[1]]
+    for i in range(1, n):
+        row = [1]
+        for j in range(1, i):
+            row.append(triangle[i-1][j-1] + triangle[i-1][j])
+        row.append(1)
+        triangle.append(row)
+    return triangle
+
