@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""first python line block"""
+
+
 def pascal_triangle(n):
     """pascal function"""
     if n <= 0:
